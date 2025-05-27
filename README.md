@@ -39,8 +39,11 @@ More results are available in our [paper](https://arxiv.org/abs/XXXX.XXXXX).
 
 ## 🚀 Getting Started
 
-### In-progress
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/llama-adaptor.git
 cd llama-adaptor
+
+
+
