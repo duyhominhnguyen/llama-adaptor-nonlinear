@@ -8,19 +8,25 @@
 
 ---
 
-## 📝 Abstract
+## 📝 Introduction
 
-The LLaMA-Adapter has recently emerged as an efficient fine-tuning technique for LLaMA models, leveraging zero-initialized attention to stabilize training and enhance performance. However, despite its empirical success, the theoretical foundations of zero-initialized attention remain largely unexplored. In this paper, we provide a rigorous theoretical analysis, establishing a connection between zero-initialized attention and mixture-of-expert models. We prove that both linear and non-linear prompts, along with gating functions, can be optimally estimated, with non-linear prompts offering greater flexibility for future applications. Empirically, we validate our findings on the open LLM benchmarks, demonstrating that non-linear prompts outperform linear ones. Notably, even with limited training data, both prompt types consistently surpass vanilla attention, highlighting the robustness and adaptability of zero-initialized attention.
+The LLaMA-Adapter has recently emerged as an efficient fine-tuning technique for LLaMA models, leveraging zero-initialized attention to stabilize training and enhance performance. However, despite its empirical success, **the theoretical foundations of zero-initialized attention remain largely unexplored**. 
+
+In this paper, we **(i) provide a rigorous theoretical analysis, establishing a connection between zero-initialized attention and mixture-of-expert models**. We **(ii) prove that both linear and non-linear prompts**, along with gating functions, can be optimally estimated, with non-linear prompts offering greater flexibility for future applications. Empirically, we validate our findings on the open LLM benchmarks, demonstrating that non-linear prompts outperform linear ones. Notably, even with limited training data, both prompt types consistently surpass vanilla attention, highlighting the robustness and adaptability of zero-initialized attention.
+
+<p align="center">
+<img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/fig_1_overview.png" alt="Alt text" width="400"/>
+</p>
 
 ---
 
 ## 🔍 Key Features
 
-- ✅ Parameter-efficient fine-tuning with adapter layers
+- ✅ Parameter-efficient fine-tuning with linear/non-linear adapter layers
 - ⚡ Fast convergence on common NLP benchmarks
 - 🧩 Modular integration into existing LLAMA architectures
 - 🧠 Supports LoRA, BitFit, and other plug-and-play strategies
-- 📉 State-of-the-art results on SuperGLUE, OpenQA, and instruction-following tasks
+- 📉 State-of-the-art results on Open LLM Benchmark Suite 
 
 ---
 
