@@ -29,6 +29,7 @@ from lm_eval.models.utils import (
     pad_and_concat,
     stop_sequences_criteria,
 )
+import argparse
 eval_logger = utils.eval_logger
 def setup_model_parallel() -> Tuple[int, int]:
     local_rank = int(os.environ.get("LOCAL_RANK", -1))
@@ -366,14 +367,35 @@ class my_LLM(TemplateLM):
 local_rank, world_size = setup_model_parallel()
 if local_rank > 0:
     sys.stdout = open(os.devnull, "w")
-        
-ckpt_dir = "./LLaMA-7B"
-adapter_path = "./alpaca_finetuning_v1/checkpoint_adapter_layer30_hypermodel64_random_initFalse_batchsize16_epoch5_7B_test/adapter_adapter_len10_layer30_epoch5.pth"
 
-typ_act = "hypermodel"
-random_init = False
-hid_acti_func = "relu"
-tokenizer_path = "./LLaMA-7B/tokenizer.model"
+
+parser = argparse.ArgumentParser(description="settings for evaluating on HellaSwag")
+    
+# Define arguments
+parser.add_argument('--ckpt_dir', type=str, required=True, help='Path to llama version')
+parser.add_argument('--adapter_path', type=str, required=True, help='Path to adapter module')
+parser.add_argument('--typ_act', type=str, required=True, help='Type non-linear for non-linear prompt')
+parser.add_argument('--hid_acti_func', type=str, required=True, help='Type activation function on hypernetwork')
+parser.add_argument('--random_init', type=str, required=True, help='Random-initialized choices for the use of conventional or zero-initialized attention . Details are in the paper')
+
+# Parse arguments
+args = parser.parse_args()
+
+ckpt_dir = args.ckpt_dir
+adapter_path = args.adapter_path #"./alpaca_finetuning_v1/checkpoint_adapter_layer30_hypermodel64_random_initFalse_batchsize16_epoch5_7B_test/adapter_adapter_len10_layer30_epoch5.pth"
+
+typ_act = args.typ_act
+
+if args.random_init == "True":
+    print("============Use conventional attention==========")
+    random_init = True
+else:
+    print("============Use zero-initialized attention==========")
+    random_init = False
+
+hid_acti_func = args.hid_acti_func
+
+tokenizer_path = os.path.join(ckpt_dir, "tokenizer.model")
 print(adapter_path)
 checkpoints = sorted(Path(ckpt_dir).glob("*.pth"))
 

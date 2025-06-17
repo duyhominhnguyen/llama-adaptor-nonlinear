@@ -96,9 +96,9 @@ llama-adaptor/
 ├── setup.cfg
 ├── pyproject.toml
 ├── generate.sh
-├── example.py
-├── hellaswag_check.py
-├── hellaswag_check.sh
+├── example.py                                  # Code for running evaluation on ARC, MMLU, and TruthfulQA
+├── hellaswag_check.py                          
+├── hellaswag_check.sh                          # Script for running evaluation on HellaSwag
 ├── alpaca_data.json                            # Dataset for fine-tuning the LLaMA-Adapter
 ├── alpaca_finetuning_v1/                       # Contain code and script for fine-tuning LLaMA-Adapter
 │   ├── llama/
@@ -111,7 +111,6 @@ llama-adaptor/
 |   ├── finetune_llama.sh
 |   ├── finetuning.py
 │   └── models_llama_adapter.py
-|
 ├── llama/                                      # Example shell scripts for training/eval
 |   ├── generation.py
 |   ├── model.py

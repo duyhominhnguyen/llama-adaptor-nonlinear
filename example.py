@@ -306,6 +306,27 @@ def find_most_similar_index(str_list, target_str):
     # Return the index of the most similar string
     return most_similar_index
 
+def check_correct(list_choice, res, label_ans):
+    num_c = 0
+    list_chosen = []
+    for chosen_index, ele_ans in enumerate(list_choice):
+        if (ele_ans.lower() in res.split("### Response:")[-1].lower()) or (ele_ans[-1] == "." and ele_ans[0:-1].lower() in res.split("### Response:")[-1].lower()):
+            num_c += 1
+            list_chosen.append(chosen_index)
+    
+    if num_c > 1:  # check whether there are more than 1 answers in the predicted output
+        return 0
+
+    if find_most_similar_index(list_choice, res.split("### Response:")[-1]) == label_ans:
+        if num_c <= 1:
+            return 1
+        else:
+            return 0
+    elif num_c == 1 and list_chosen[0] == label_ans:
+        return 1
+    else:
+        return 0
+
 def main(
     ckpt_dir: str,
     tokenizer_path: str,
@@ -365,24 +386,8 @@ def main(
                     print("Answer in text:", label_ans[i+j])
                     print("Predict sentence:", res.split("### Response:")[-1])
                     print(find_most_similar_index(list_choice[i+j], res.split("### Response:")[-1]))
-                    num_c = 0
-                    list_chosen = []
-                    for chosen_index, ele_ans in enumerate(list_choice[i+j]):
-                        if (ele_ans.lower() in res.split("### Response:")[-1].lower()) or (ele_ans[-1] == "." and ele_ans[0:-1].lower() in res.split("### Response:")[-1].lower()):
-                            num_c += 1
-                            list_chosen.append(chosen_index)
-                            
-                    if find_most_similar_index(list_choice[i+j], res.split("### Response:")[-1]) == label_ans[i+j]:
-                        if num_c <= 1:
-                            correct += 1
-                            mmlu_res[list_task[i+j]].append(1)
-                        else:
-                            mmlu_res[list_task[i+j]].append(0)
-                    elif num_c == 1 and list_chosen[0] == label_ans[i+j]:
-                        correct += 1
-                        mmlu_res[list_task[i+j]].append(1)
-                    else:
-                        mmlu_res[list_task[i+j]].append(0)
+                    correct += check_correct(list_choice[i+j], res, label_ans[i+j])
+                    mmlu_res[list_task[i+j]].append(check_correct(list_choice[i+j], res, label_ans[i+j]))  
                     total += 1
                     for task_mmlu in mmlu_res:
                         mmlu_acc[task_mmlu] = np.sum(mmlu_res[task_mmlu])/len(mmlu_res[task_mmlu])*100
@@ -395,23 +400,7 @@ def main(
                 
                 elif typeQues == "truthqa":
                     print("Answer in text:", label_ans[i+j])
-                    
-                    num_c = 0
-                    list_chosen = []
-                    for chosen_index, ele_ans in enumerate(list_choice[i+j]):
-                        if (ele_ans.lower() in res.split("### Response:")[-1].lower()) or (ele_ans[-1] == "." and ele_ans[0:-1].lower() in res.split("### Response:")[-1].lower()):
-                            num_c += 1
-                            list_chosen.append(chosen_index)
-
-                    if find_most_similar_index(list_choice[i+j], res.split("### Response:")[-1]) == label_ans[i+j]:
-                        if "I have no comment." != res.split("### Response:")[-1]:
-                            if num_c <= 1:
-                                correct += 1
-                        elif res.split("### Response:")[-1] == "I have no comment." and "I have no comment." in list_choice[i+j]:
-                            if num_c <= 1:
-                                correct += 1
-                    elif num_c == 1 and list_chosen[0] == label_ans[i+j]:
-                        correct += 1
+                    correct += check_correct(list_choice[i+j], res, label_ans[i+j])
                     total += 1
                     print("========> NoCorrect:", correct)
                     print("========> Total:", total)
@@ -425,24 +414,8 @@ def main(
                     print("Answer in text:", label_ans[i+j])
                     print("Predict sentence:", res.split("### Response:")[-1])
                     print(find_most_similar_index(list_choice[i+j], res.split("### Response:")[-1]))
-                    num_c = 0
-                    list_chosen = []
-                    for chosen_index, ele_ans in enumerate(list_choice[i+j]):
-                        if (ele_ans.lower() in res.split("### Response:")[-1].lower()) or (ele_ans[-1] == "." and ele_ans[0:-1].lower() in res.split("### Response:")[-1].lower()):
-                            num_c += 1
-                            list_chosen.append(chosen_index)
-                    if find_most_similar_index(list_choice[i+j], res.split("### Response:")[-1]) == label_ans[i+j]:
-                        if num_c <= 1:
-                            correct += 1
-                            arc_res[list_task[i+j]].append(1)
-                        else:
-                            arc_res[list_task[i+j]].append(0)
-                    elif num_c == 1 and list_chosen[0] == label_ans[i+j]:
-                        correct += 1
-                        arc_res[list_task[i+j]].append(1)
-                    else:
-                        arc_res[list_task[i+j]].append(0)
-                    
+                    correct += check_correct(list_choice[i+j], res, label_ans[i+j])
+                    arc_res[list_task[i+j]].append(check_correct(list_choice[i+j], res, label_ans[i+j]))
                     total += 1
                     
                     for task_arc in arc_res:
