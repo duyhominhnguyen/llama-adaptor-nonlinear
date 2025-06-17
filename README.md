@@ -184,7 +184,20 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --hidden_dim ${hidden_dim}\
     --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
 ```
-### 2. Inference
+
+### 3. Extracting Adapter Weight before Inference
+
+After finishing training on Alpaca dataset, we first extract weight of adapter, then feed into inference script.
+
+```bash
+cd alpaca_finetuning_v1/
+bash extract_adapter.sh
+# or
+python extract_adapter_from_checkpoint.py \
+       --folder ./checkpoint_adapter_layer30_hypermodel64relu_random_initFalse_batchsize16_epoch5_7B_test \
+```
+
+### 4. Inference
 ```bash
 # Zero-shot evaluation on ARC
 torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \
