@@ -1,7 +1,7 @@
 import torch
 import argparse
 
-parser = argparse.ArgumentParser("Audio Captioning", add_help=False)
+parser = argparse.ArgumentParser("LLaMA-Adapter", add_help=False)
 parser.add_argument(
     "--folder",
     default=None,
@@ -44,4 +44,4 @@ for i in range(len(weight_list)):
     if "hyperAdapter" in weight_list[i]:
         print(weight_list[i], model["model"][weight_list[i]].shape)
 
-torch.save(new_model, f"{folder}/adapter_adapter_len10_layer30_epoch2.pth")
+torch.save(new_model, f"{folder}/adapter_adapter_len10_layer30_epoch5.pth")

@@ -24,6 +24,7 @@ class ModelArgs:
     max_seq_len: int = 2048
     adapter_len: int = 10
     adapter_layer: int = 30
+    typ_gate: str = "random"
 
 
 class RMSNorm(torch.nn.Module):
