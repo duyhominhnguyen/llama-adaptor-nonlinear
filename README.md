@@ -107,8 +107,8 @@ llama-adaptor/
 |   |   └── tokenizer.py
 |   ├── util/
 |   ├── engine_finetuning.py
-|   ├── extract_adapter_from_checkpoint.py
-|   ├── finetune_llama.sh
+|   ├── extract_adapter_from_checkpoint.py      # Extract adapter weight
+|   ├── finetune_llama.sh                       # Script finetune
 |   ├── finetuning.py
 │   └── models_llama_adapter.py
 ├── llama/                                      # Example shell scripts for training/eval
