@@ -70,6 +70,9 @@ We conduct experiments on two LLaMA model sizes:
 - Total Batch Size: 64
 - Learning Rate: 0.009
 - Weight Decay: 0.02
+- Type of Non-Linear MLP-2 layers (--typ_act): hypernetwork
+- Type of Activation Function in Non-Linear MLP-2 layers (--hid_acti_func): relu
+- Hidden Dim of Non-Linear MLP-2 layers (--hidden_dim): 64
 - Dataset: [Alpaca (Taori et al., 2023)](https://github.com/tatsu-lab/stanford_alpaca)
 
 **Optimizer**: AdamW  
@@ -192,14 +195,14 @@ torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \
       --max_seq_len 2048 \
       --ckpt_dir ./LLaMA-7B\
       --tokenizer_path ./LLaMA-7B/tokenizer.model \
-      --adapter_path ./alpaca_finetuning_v1/checkpoint_adapter_layer30_hypermodel64_random_initFalse_batchsize16_epoch5_7B_test/adapter_adapter_len10_layer30_epoch5.pth
+      --adapter_path ./example_weight/non_linear_prompt_7B.pth
 
 # 10-shot evaluation on HellaSwag
 bash hellaswag_check.sh
 # or
 python hellaswag_check.py \
       --ckpt_dir ./LLaMA-7B \
-      --adapter_path ./alpaca_finetuning_v1/checkpoint_adapter_layer30_hypermodel64_random_initFalse_batchsize16_epoch5_7B_test/adapter_adapter_len10_layer30_epoch5.pth \
+      --adapter_path ./example_weight/non_linear_prompt_7B.pth \
       --typ_act hypermodel \
       --hid_acti_func relu \
       --random_init False

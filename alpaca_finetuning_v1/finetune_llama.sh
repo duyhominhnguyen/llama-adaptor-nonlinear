@@ -9,7 +9,6 @@ batch_size=16
 epoch=5
 name=7B
 adapter_layer=30
-# rate=0.01
 
 torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --model Llama7B_adapter \
