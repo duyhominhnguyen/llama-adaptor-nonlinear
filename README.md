@@ -213,6 +213,9 @@ python extract_adapter_from_checkpoint.py \
 ```
 
 ### 5. Inference
+
+You can download adapter weights of non-linear prompt setting in [weights] and put into the "example_weight" folder to run the inference scripts.
+
 ```bash
 # Zero-shot evaluation on ARC
 torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \
