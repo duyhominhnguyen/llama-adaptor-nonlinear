@@ -125,7 +125,22 @@ llama-adaptor/
     └── architecture.png
 ```
 
-### 2. Training
+### 2. Set Up
+
+```bash
+conda create -n llama_adapter -y python=3.8
+conda activate llama_adapter
+
+# install dependency and llama-adapter
+pip install -r requirements.txt
+pip install -e .
+
+# install lm-evaluation-harness library for HellaSwag evaluation
+cd lm-evaluation-harness/
+pip install -e .
+```
+
+### 3. Training
 
 To fine-tune LLaMA using linear or non-linear prompts:
 
@@ -185,7 +200,7 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
 ```
 
-### 3. Extracting Adapter Weight before Inference
+### 4. Extracting Adapter Weight before Inference
 
 After finishing training on Alpaca dataset, we first extract weight of adapter, then feed into inference script.
 
@@ -197,7 +212,7 @@ python extract_adapter_from_checkpoint.py \
      --folder ./checkpoint_adapter_layer30_hypermodel64relu_random_initFalse_batchsize16_epoch5_7B_test \
 ```
 
-### 4. Inference
+### 5. Inference
 ```bash
 # Zero-shot evaluation on ARC
 torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \

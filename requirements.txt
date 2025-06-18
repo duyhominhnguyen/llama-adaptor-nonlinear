@@ -5,3 +5,5 @@ sentencepiece
 transformers
 timm
 tensorboard
+datasets
+difflib
