@@ -10,7 +10,7 @@ adapter_layer=30
 
 torchrun --nnodes=1 --nproc_per_node=3 --master_port=25012 finetuning.py \
     --model Llama7B_adapter \
-    --llama_model_path ../LLaMA-${name} \
+    --llama_model_path ./LLaMA-${name} \
     --data_path ../alpaca_data.json \
     --adapter_layer ${adapter_layer} \
     --adapter_len 10 \

@@ -161,7 +161,7 @@ To fine-tune LLaMA using linear or non-linear prompts:
 ```bash
 # Linear prompt tuning on LLaMA
 cd alpaca_finetuning_v1/
-bash finetune_llama.sh
+bash finetune_llama_linear.sh
 # or
 typ_act=identity
 typ_gate=random
@@ -188,7 +188,7 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
 
 # Non-linear prompt tuning on LLaMA
 cd alpaca_finetuning_v1/
-bash finetune_llama.sh
+bash finetune_llama_non_linear.sh
 # or
 typ_act=hypermodel
 typ_gate=random
