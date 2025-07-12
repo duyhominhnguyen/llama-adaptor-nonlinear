@@ -79,6 +79,20 @@ We conduct experiments on two LLaMA model sizes:
 **Fine-tuning Method**: Zero-Initialized Attention with Linear/Non-Linear Prompts
 
 ---
+
+### 📦 Model Checkpoints
+
+| Model                                  | Description                                | Download Link |
+|----------------------------------------|--------------------------------------------|---------------|
+| `7B-non-linear-prompt`                            | LLaMA-7B, Zero-Initialized Attention with non-linear prompt                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+| `7B-linear-prompt`                           | LLaMA-7B, Zero-Initialized Attention with linear prompt                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+| `7B-random-init-prompt`                         | LLaMA-7B, Prefix-Tuning with Conventional Attention                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+| `13B-non-linear-prompt`                            | LLaMA-13B, Zero-Initialized Attention with non-linear prompt                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+| `13B-linear-prompt`                           | LLaMA-13B, Zero-Initialized Attention with linear prompt                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+| `13B-random-init-prompt`                         | LLaMA-13B, Prefix-Tuning with Conventional Attention                   | [Link](https://drive.google.com/drive/folders/1pHYuPxskfaBEv9qy7Wl-8XL6dG-xY2vv?usp=sharing)     |
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
