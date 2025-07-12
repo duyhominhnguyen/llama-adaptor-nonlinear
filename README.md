@@ -141,6 +141,8 @@ llama-adaptor/
 
 ### 2. Set Up
 
+- Create the Python environment by following these steps:
+
 ```bash
 conda create -n llama_adaptor -y python=3.9
 conda activate llama_adaptor
@@ -153,6 +155,8 @@ pip install -e .
 cd lm-evaluation-harness/
 pip install -e .
 ```
+
+- Download the LLaMA-7B model from this [link](https://dfkide-my.sharepoint.com/:u:/g/personal/thma02_dfki_de/EcjdwiTMZ61GkwfVuUQsvSwBSZqH1jEMK_hM8rxzraXNxQ?e=o9XvWS), then extract and put the `LLaMA-7B` folder inside the `alpaca_finetuning_v1` folder.
 
 ### 3. Training
 
