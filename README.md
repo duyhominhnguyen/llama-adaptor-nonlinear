@@ -128,8 +128,8 @@ llama-adaptor/
 ### 2. Set Up
 
 ```bash
-conda create -n llama_adapter -y python=3.8
-conda activate llama_adapter
+conda create -n llama_adaptor -y python=3.9
+conda activate llama_adaptor
 
 # install dependency and llama-adapter
 pip install -r requirements.txt

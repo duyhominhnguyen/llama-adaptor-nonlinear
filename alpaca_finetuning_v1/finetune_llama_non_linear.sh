@@ -1,16 +1,14 @@
-# --random_init ${random_init} \
 typ_act=hypermodel
 typ_gate=random
 hid_acti_func=relu
 hidden_dim=64
 
-random_init=False # False: Remember to remove
 batch_size=16
 epoch=5
 name=7B
 adapter_layer=30
 
-torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
+torchrun --nnodes=1 --nproc_per_node=3 --master_port=25012 finetuning.py \
     --model Llama7B_adapter \
     --llama_model_path ../LLaMA-${name} \
     --data_path ../alpaca_data.json \
@@ -26,4 +24,4 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --typ_gate ${typ_gate} \
     --hid_acti_func ${hid_acti_func}\
     --hidden_dim ${hidden_dim}\
-    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
+    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_batchsize${batch_size}_epoch${epoch}_${name}_test/

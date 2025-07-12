@@ -6,4 +6,3 @@ transformers
 timm
 tensorboard
 datasets
-difflib
