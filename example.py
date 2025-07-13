@@ -338,6 +338,7 @@ def main(
     top_p: float = 0.75,
     max_seq_len: int = 512,
     max_batch_size: int = 32,
+    batch_size_per_iter: int = 32,
     quantizer: bool = False,
     random_init: bool = False
 ):
@@ -370,8 +371,8 @@ def main(
     arc_res = {}
     arc_acc = {}
 
-    for i in range(0, len(prompts), 32):
-        results = generator.generate(prompts[i:min(i+32, len(prompts))], max_gen_len=512, temperature=temperature, top_p=top_p, typ_act=typ_act, random_init=random_init)
+    for i in range(0, len(prompts), batch_size_per_iter):
+        results = generator.generate(prompts[i:min(i+batch_size_per_iter, len(prompts))], max_gen_len=512, temperature=temperature, top_p=top_p, typ_act=typ_act, random_init=random_init)
         for j, res in enumerate(results):
             print(res)
             if len(label) != 0 or typeQues in "truthqa":

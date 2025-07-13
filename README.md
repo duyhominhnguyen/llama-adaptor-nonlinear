@@ -247,6 +247,7 @@ torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \
       --typeQues arc \
       --typ_act hypermodel \
       --hid_acti_func relu \
+      --batch_size_per_iter 32 \
       --random_init False \
       --max_seq_len 2048 \
       --ckpt_dir ./LLaMA-7B\
