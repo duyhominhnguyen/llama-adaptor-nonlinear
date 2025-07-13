@@ -22,11 +22,10 @@ In this paper, we **(i) provide a rigorous theoretical analysis, establishing a 
 
 ## 🔍 Key Features
 
-- ✅ Parameter-efficient fine-tuning with linear/non-linear adapter layers
-- ⚡ Fast convergence on common NLP benchmarks
+- ✅ Parameter-efficient fine-tuning with linear/non-linear prompts combined with zero-initialized attention
+- ⚡ Fast convergence on Alpaca dataset
 - 🧩 Modular integration into existing LLAMA architectures
-- 🧠 Supports LoRA, BitFit, and other plug-and-play strategies
-- 📉 State-of-the-art results on Open LLM Benchmark Suite 
+- 📉 Outperform the original prefix-tuning method and non-linear prompt further enhance the performance
 
 ---
 
@@ -156,7 +155,7 @@ cd lm-evaluation-harness/
 pip install -e .
 ```
 
-- Download the LLaMA-7B model weights from this [link](https://huggingface.co/meta-llama/Llama-2-7b), then put the files into the `alpaca_finetuning_v1/LLaMA-7B` folder.
+- Download the LLaMA-7B model weights from this [link](https://huggingface.co/nyanko7/LLaMA-7B/tree/main), then put the files into the `alpaca_finetuning_v1/LLaMA-7B` folder.
 
 ### 3. Training
 
