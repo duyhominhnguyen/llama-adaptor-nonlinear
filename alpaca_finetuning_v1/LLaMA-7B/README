@@ -1,0 +1,5 @@
+Put the LLaMA-7B model weights here
+- checklist.chk
+- consolidated.00.pth
+- params.json
+- tokenizer.model
