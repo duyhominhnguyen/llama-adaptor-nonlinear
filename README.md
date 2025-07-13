@@ -217,7 +217,7 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
 ```
 
-After training, the curves of losses of three settings, non-linear prompts, linear-prompts, and random-init prompts, are:
+After training, the loss curves for the three settings — **non-linear prompts**, **linear prompts**, and **random-initialized prompts** — have the following shapes:
 
 <p align="center">
 <img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/loss_curve.png" alt="Alt text" width="400"/>
