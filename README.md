@@ -156,7 +156,7 @@ cd lm-evaluation-harness/
 pip install -e .
 ```
 
-- Download the LLaMA-7B model from this [link](https://dfkide-my.sharepoint.com/:u:/g/personal/thma02_dfki_de/EcjdwiTMZ61GkwfVuUQsvSwBSZqH1jEMK_hM8rxzraXNxQ?e=o9XvWS), then extract and put the `LLaMA-7B` folder inside the `alpaca_finetuning_v1` folder.
+- Download the LLaMA-7B model weights from this [link](https://huggingface.co/meta-llama/Llama-2-7b), then put the files into the `alpaca_finetuning_v1/LLaMA-7B` folder.
 
 ### 3. Training
 
