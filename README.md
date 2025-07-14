@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2502.03029)
+[![Presentation](https://img.shields.io/badge/YouTube-Presentation-red)](https://www.youtube.com/watch?v=ZWuAbjE0cCU)
 [![Code](https://img.shields.io/badge/Code-PyTorch-green)](#)
 
 > Official repository for our paper: **"On Zero-Initialized Attention: Optimal Prompt and Gating Factor Estimation", ICML 2025**
@@ -18,11 +19,7 @@ In this paper, we **(i) provide a rigorous theoretical analysis, establishing a 
 <img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/fig_1_overview.png" alt="Alt text" width="400"/>
 </p>
 
-
-<a href="https://www.youtube.com/watch?v=ZWuAbjE0cCU&autoplay=1" target="_blank">
-  <img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/video_thumbnail.png" width="900" />
-</a>
-
+<img src="figures/presentation.gif" alt="your_alternative_text" width="your_width" height="your_height" loop=infinite>
 
 ---
 
