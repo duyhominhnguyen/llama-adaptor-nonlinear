@@ -125,7 +125,7 @@ llama-adaptor/
 |   |   ├── model.py
 |   |   └── tokenizer.py
 |   ├── util/
-|   ├── LLaMA-7B/
+|   ├── LLaMA-7B/                               # These files are not included, see the instructions below
 |   |   ├── checklist.chk
 |   |   ├── consolidated.00.pth
 |   |   ├── params.json
