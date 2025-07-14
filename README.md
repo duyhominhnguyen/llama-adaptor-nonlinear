@@ -19,7 +19,7 @@ In this paper, we **(i) provide a rigorous theoretical analysis, establishing a 
 </p>
 
 
-<a href="https://www.youtube.com/watch?v=r8JbZJ2afUk&autoplay=1" target="_blank">
+<a href="https://www.youtube.com/watch?v=ZWuAbjE0cCU&autoplay=1" target="_blank">
   <img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/video_thumbnail.png" width="900" />
 </a>
 
