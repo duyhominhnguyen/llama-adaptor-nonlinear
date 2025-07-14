@@ -128,6 +128,11 @@ llama-adaptor/
 |   |   ├── model.py
 |   |   └── tokenizer.py
 |   ├── util/
+|   ├── LLaMA-7B/
+|   |   ├── checklist.chk
+|   |   ├── consolidated.00.pth
+|   |   ├── params.json
+|   |   └── tokenizer.model
 |   ├── engine_finetuning.py
 |   ├── extract_adapter_from_checkpoint.py      # Extract adapter weight
 |   ├── finetune_llama.sh                       # Script finetune
@@ -256,20 +261,22 @@ torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 example.py \
       --batch_size_per_iter 32 \
       --random_init False \
       --max_seq_len 2048 \
-      --ckpt_dir ./LLaMA-7B\
-      --tokenizer_path ./LLaMA-7B/tokenizer.model \
+      --ckpt_dir ./alpaca_finetuning_v1/LLaMA-7B\
+      --tokenizer_path ./alpaca_finetuning_v1/LLaMA-7B/tokenizer.model \
       --adapter_path ./example_weight/non_linear_prompt_7B.pth
 
 # 10-shot evaluation on HellaSwag
 bash hellaswag_check.sh
 # or
 python hellaswag_check.py \
-      --ckpt_dir ./LLaMA-7B \
+      --ckpt_dir ./alpaca_finetuning_v1/LLaMA-7B \
       --adapter_path ./example_weight/non_linear_prompt_7B.pth \
       --typ_act hypermodel \
       --hid_acti_func relu \
       --random_init False
 ```
+
+To test with linear models, set the arguments `--typ_act` to `identity` and `--hid_acti_func` to `none`. If you encounter out-of-memory errors, try reducing `--batch_size_per_iter` and `--max_seq_len`.
 
 ## 📚 Citation
 

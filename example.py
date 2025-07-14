@@ -68,9 +68,9 @@ def load(
     if "7B" in ckpt_dir:
         ckpt_path = checkpoints[local_rank]
         print("Loading")
-        checkpoint = torch.load(ckpt_path, map_location="cpu")
+        checkpoint = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         
-    adapter_checkpoint = torch.load(adapter_path, map_location="cpu")
+    adapter_checkpoint = torch.load(adapter_path, map_location="cpu", weights_only=False)
     with open(Path(ckpt_dir) / "params.json", "r") as f:
         params = json.loads(f.read())
         
@@ -129,7 +129,7 @@ def load(
             "rope": None,
         }
         for i, ckpt in enumerate(checkpoints):
-            checkpoint = torch.load(ckpt, map_location="cpu")
+            checkpoint = torch.load(ckpt, map_location="cpu", weights_only=False)
             for parameter_name, parameter in model.named_parameters():
                 short_name = parameter_name.split(".")[-2]
                 if short_name not in key_to_dim:

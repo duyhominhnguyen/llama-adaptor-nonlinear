@@ -18,7 +18,7 @@ if "13B" in folder:
 else:
     num_layer = 32
     
-model = torch.load(f"{folder}/checkpoint-4.pth", map_location="cpu")
+model = torch.load(f"{folder}/checkpoint-4.pth", map_location="cpu", weights_only=False)
 new_model = dict()
 weight_list = ["layers." + str(i) + ".attention.gate" for i in range(num_layer)]
 old_weight_list = ["layers." + str(i) + ".attention.gate" for i in range(num_layer)]

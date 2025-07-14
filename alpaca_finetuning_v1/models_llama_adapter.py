@@ -11,7 +11,7 @@ def Llama7B_adapter(args, **kwargs):
     model_name = "7B"
     
     if "7B" in args.llama_model_path:
-        checkpoints = torch.load(llama_model_path + "/consolidated.00.pth", map_location="cpu")
+        checkpoints = torch.load(llama_model_path + "/consolidated.00.pth", map_location="cpu", weights_only=False)
     else:
         checkpoints = sorted(Path(args.llama_model_path).glob("*.pth"))
         
@@ -61,7 +61,7 @@ def Llama7B_adapter(args, **kwargs):
             "rope": None,
         }
         for i, ckpt in enumerate(checkpoints):
-            checkpoint = torch.load(ckpt, map_location="cpu")
+            checkpoint = torch.load(ckpt, map_location="cpu", weights_only=False)
             for parameter_name, parameter in model_llama_adapter.named_parameters():
                 short_name = parameter_name.split(".")[-2]
                 if short_name not in key_to_dim:
