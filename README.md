@@ -154,7 +154,7 @@ llama-adaptor/
 conda create -n llama_adaptor -y python=3.9
 conda activate llama_adaptor
 
-# install dependency and llama-adapter
+# install dependency and llama-adaptor
 pip install -r requirements.txt
 pip install -e .
 
@@ -181,7 +181,7 @@ hidden_dim=0
 
 torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --model Llama7B_adapter \
-    --llama_model_path ../LLaMA-${name} \
+    --llama_model_path ./LLaMA-${name} \
     --data_path ../alpaca_data.json \
     --adapter_layer ${adapter_layer} \
     --adapter_len 10 \
@@ -208,7 +208,7 @@ hidden_dim=64
 
 torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --model Llama7B_adapter \
-    --llama_model_path ../LLaMA-${name} \
+    --llama_model_path ./LLaMA-${name} \
     --data_path ../alpaca_data.json \
     --adapter_layer ${adapter_layer} \
     --adapter_len 10 \
@@ -247,7 +247,7 @@ python extract_adapter_from_checkpoint.py \
 
 ### 5. Inference
 
-You can download adapter weights of non-linear prompt setting in [weights] and put into the "example_weight" folder to run the inference scripts.
+Now you can use the extracted weights for inference. Alternatively, you can download adapter weights of non-linear prompt setting in [Model Checkpoints](#-model-checkpoints) and put into the "example_weight" folder to run the inference scripts.
 
 ```bash
 # Zero-shot evaluation on ARC
@@ -273,7 +273,7 @@ torchrun --nnodes=1 --nproc_per_node=1 --master_port=25010 hellaswag_check.py \
       --random_init False
 ```
 
-To test with linear models, set the arguments `--typ_act` to `identity` and `--hid_acti_func` to `none`. If you encounter out-of-memory errors, try reducing `--batch_size_per_iter` and `--max_seq_len`.
+If you use the extracted weight, the argument for `--adapter_path` is something like `./alpaca_finetuning_v1/checkpoint_adapter_layer30_hypermodel64relu_batchsize16_epoch5_7B_test/adapter_adapter_len10_layer30_epoch5.pth`. To test with linear models, set the arguments `--typ_act` to `identity` and `--hid_acti_func` to `none`. If you encounter out-of-memory errors, try reducing `--batch_size_per_iter` and `--max_seq_len`.
 
 ## 📚 Citation
 
