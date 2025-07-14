@@ -100,7 +100,7 @@ We conduct experiments on two LLaMA model sizes:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/llama-adaptor.git
+git clone https://github.com/duyhominhnguyen/llama-adaptor-nonlinear.git
 cd llama-adaptor
 ```
 
