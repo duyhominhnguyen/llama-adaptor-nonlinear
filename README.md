@@ -101,7 +101,7 @@ We conduct experiments on two LLaMA model sizes:
 
 ```bash
 git clone https://github.com/duyhominhnguyen/llama-adaptor-nonlinear.git
-cd llama-adaptor
+cd llama-adaptor-nonlinear
 ```
 
 ### Repo Structures
