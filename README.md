@@ -18,6 +18,12 @@ In this paper, we **(i) provide a rigorous theoretical analysis, establishing a 
 <img src="https://github.com/duyhominhnguyen/llama-adaptor-nonlinear/blob/main/figures/fig_1_overview.png" alt="Alt text" width="400"/>
 </p>
 
+
+<a href="https://www.youtube.com/watch?v=r8JbZJ2afUk&autoplay=1" target="_blank">
+  <img src="https://img.youtube.com/vi/r8JbZJ2afUk/hqdefault.jpg" width="900" />
+</a>
+
+
 ---
 
 ## 🔍 Key Features
