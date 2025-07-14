@@ -195,7 +195,7 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --typ_gate ${typ_gate} \
     --hid_acti_func ${hid_acti_func}\
     --hidden_dim ${hidden_dim}\
-    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
+    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_batchsize${batch_size}_epoch${epoch}_${name}_test/
 
 # Non-linear prompt tuning on LLaMA
 cd alpaca_finetuning_v1/
@@ -222,7 +222,7 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=25012 finetuning.py \
     --typ_gate ${typ_gate} \
     --hid_acti_func ${hid_acti_func}\
     --hidden_dim ${hidden_dim}\
-    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_random_init${random_init}_batchsize${batch_size}_epoch${epoch}_${name}_test/
+    --output_dir ./checkpoint_adapter_layer${adapter_layer}_${typ_act}${hidden_dim}${hid_acti_func}_batchsize${batch_size}_epoch${epoch}_${name}_test/
 ```
 
 After training, the loss curves for the three settings — **non-linear prompts**, **linear prompts**, and **random-initialized prompts** — have the following shapes:
@@ -242,7 +242,7 @@ cd alpaca_finetuning_v1/
 bash extract_adapter.sh
 # or
 python extract_adapter_from_checkpoint.py \
-     --folder ./checkpoint_adapter_layer30_hypermodel64relu_random_initFalse_batchsize16_epoch5_7B_test \
+     --folder ./checkpoint_adapter_layer30_hypermodel64relu_batchsize16_epoch5_7B_test \
 ```
 
 ### 5. Inference
